@@ -1,11 +1,13 @@
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 project "discord-rpc"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C++"
-	staticruntime "on"
+	if(staticRuntime) then
+		staticruntime "on"
+	end
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("bin/" .. outputdir .."")
+	objdir ("bin-int/" .. outputdir .."")
 
 	files
 	{
@@ -29,9 +31,13 @@ project "discord-rpc"
 
 	defines {
 		--"DISCORD_DISABLE_IO_THREAD",
-		--"DISCORD_DYNAMIC_LIB",
-		--"DISCORD_BUILDING_SDK",
 	}
+	if(staticRuntime) then
+		defines {
+			"DISCORD_DYNAMIC_LIB",
+			"DISCORD_BUILDING_SDK",
+		}
+	end
 
 	filter "system:linux"
 		pic "On"

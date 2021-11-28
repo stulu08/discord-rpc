@@ -31,13 +31,9 @@ project "discord-rpc"
 
 	defines {
 		--"DISCORD_DISABLE_IO_THREAD",
+		"DISCORD_DYNAMIC_LIB",
+		"DISCORD_BUILDING_SDK"
 	}
-	if(staticRuntime) then
-		defines {
-			"DISCORD_DYNAMIC_LIB",
-			"DISCORD_BUILDING_SDK",
-		}
-	end
 
 	filter "system:linux"
 		pic "On"

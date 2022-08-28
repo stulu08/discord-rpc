@@ -3,3 +3,8 @@
 /thirdparty/
 .vs/
 .DS_Store
+
+bin
+bin-int
+*.vcxproj
+*.vcxproj.*

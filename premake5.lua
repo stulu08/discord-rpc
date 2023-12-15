@@ -2,9 +2,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 project "discord-rpc"
 	kind "SharedLib"
 	language "C++"
-	if(staticRuntime) then
-		staticruntime "on"
-	end
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .."")
 	objdir ("bin-int/" .. outputdir .."")
